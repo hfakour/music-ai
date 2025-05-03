@@ -1,0 +1,113 @@
+body {
+  background-color: #282a36;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  position: relative;
+}
+
+.greeting-container {
+  position: absolute;
+  top: 30%;
+  /* بالا بردن لوگو از کانتینر */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 1;
+  /* مطمئن می‌شویم که در بالای کانتینر قرار گیرد */
+}
+
+.logo {
+  width: 5rem;
+  height: 5rem;
+  margin-bottom: 10px;
+}
+
+.greeting-text {
+  color: white;
+  font-size: 1.5rem;
+}
+
+/* استایل برای کانتینر چت */
+.chat-container {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #21222c;
+  border-radius: 3rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  max-width: 800px;
+  width: calc(100% - 32px);
+  top: 50%;
+  /* شروع از وسط */
+  transition: top 1.5s ease-in-out, transform 1s ease-in-out;
+  /* انیمیشن آرام برای انتقال */
+}
+
+/* زمانی که حرکت می‌کنه به پایین */
+.move-to-bottom {
+  top: 98%;
+  /* حرکت به پایین */
+  transform: translate(-50%, -100%);
+  /* انتقال موقعیت دقیق */
+}
+
+/* فرم چت */
+.chat-form {
+  display: flex;
+  align-items: center;
+  background-color: #21222c;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+/* ورودی متن */
+.chat-input {
+  flex-grow: 1;
+  padding: 0.5rem 1rem;
+  background-color: #21222c;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  direction: rtl;
+  text-align: right;
+}
+
+.chat-input::placeholder {
+  color: white;
+  /* رنگ سفید برای placeholder */
+  font-size: 1.2rem;
+  /* اندازه بزرگتر برای placeholder */
+}
+
+.chat-input:focus {
+  outline: none;
+}
+
+/* دکمه ارسال */
+.send-button {
+  width: 40px;
+  height: 40px;
+  margin-left: 0.5rem;
+  border-radius: 50%;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* آیکون داخل دکمه - موشکی رو به بالا */
+.send-icon {
+  width: 20px;
+  height: 20px;
+  fill: #21222c;
+}

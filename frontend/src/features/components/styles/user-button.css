@@ -1,0 +1,17 @@
+.user-button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  transition: transform 0.2s ease;
+  padding: 0;
+}
+
+.user-button:hover {
+  transform: scale(1.1);
+}

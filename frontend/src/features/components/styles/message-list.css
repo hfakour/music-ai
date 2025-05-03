@@ -1,0 +1,35 @@
+.message-list-container {
+  width: 100%;
+  height: calc(100vh - 100px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 30%; /* پدینگ اولیه */
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 11%;
+  top: auto;
+  left: 0;
+  right: 0;
+  scrollbar-color: #6272a4 transparent; /* فایرفاکس */
+}
+
+/* حذف پدینگ در صفحه‌های کوچک‌تر */
+@media (max-width: 992px) {
+  .message-list-container {
+    padding: 0 2%; /* حذف پدینگ */
+  }
+}
+
+/* استایل‌های اسکرول */
+.message-list-container::-webkit-scrollbar-track {
+  background: transparent; /* پس‌زمینه اسکرول */
+}
+
+.message-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-grow: 1;
+}

@@ -1,0 +1,62 @@
+.message-item {
+    padding: 10px 15px;
+    margin: 3% 0;
+    border-radius: 1rem;
+    max-width: 90%;
+    word-wrap: break-word;
+    font-family: "Vazirmatn", sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .message-text {
+    text-align: justify; /* تراز کردن متن به صورت justify */
+    margin-bottom: 10px; /* کمی فاصله از پایین */
+  }
+  
+  
+  /* پیام کاربر */
+  .message-item.user-message {
+    background-color: #6272a4; /* رنگ پس‌زمینه پیام کاربر */
+    color: white;
+    align-self: flex-end;
+    border-top-right-radius: 0; /* حاشیه برای چت کاربر */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: right; /* جهت متن برای پیام کاربر */
+  }
+  
+  /* پیام ربات */
+  .message-item.bot-message {
+    background-color: #4a567d; 
+    color:white;
+    align-self: flex-start;
+    border-top-left-radius: 0; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: left; 
+    margin-left: 2%;/* جهت متن برای پیام ربات */
+  }
+  
+  /* کلاس اختصاصی برای timestamp پیام کاربر */
+  .timestamp.user-timestamp {
+    font-size: 12px;
+    color: white;
+    margin-top: 5px;
+    text-align: left;
+  }
+  
+  /* کلاس اختصاصی برای timestamp پیام ربات */
+  .timestamp.bot-timestamp {
+    font-size: 12px;
+    color: white;
+    margin-top: 5px;
+    text-align: right;
+  }
+  
+  .message-item .message-text {
+    max-width: 100%;
+  }
+  
+  .timestamp span {
+    margin: 0 5px; /* فاصله بین روز و ساعت */
+  }
+  
