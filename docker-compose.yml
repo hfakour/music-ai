@@ -1,35 +1,36 @@
-services:
-  frontend:
-    build: ./frontend
-    ports:
-      - "5173:5173"
-    depends_on:
-      - backend
+version: '3.9'
 
+services:
   backend:
     build: ./backend
     ports:
-      - "3000:3000"
+      - "3001:3001"
+    env_file:
+      - .env
     depends_on:
-      - model-api
       - db
 
-  model-api:
-    build: ./model-api
+  frontend:
+    build: ./frontend
     ports:
-      - "8000:8000"
+      - "3000:3000"
+
+  ml:
+    build: ./ml
+    ports:
+      - "5000:5000"
 
   db:
-    image: postgres:15
+    image: postgres:16
     restart: always
     environment:
-      POSTGRES_DB: mydb
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: secret
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+      POSTGRES_DB: mydb
     ports:
       - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
 
 volumes:
-  postgres_data:
+  db_data:
