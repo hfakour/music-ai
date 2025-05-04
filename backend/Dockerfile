@@ -14,8 +14,5 @@ COPY . .
 # 5. Build TypeScript code
 RUN npm run build
 
-# 6. Expose port
-EXPOSE 3001
-
 # 7. Start the app
 CMD ["node", "dist/server.js"]
