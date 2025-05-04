@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   backend:
     build: ./backend
@@ -15,18 +13,20 @@ services:
     ports:
       - "3000:3000"
 
-  ml:
-    build: ./ml
+  model-api:
+    build: ./model-api
     ports:
       - "5000:5000"
 
   db:
     image: postgres:16
     restart: always
+    env_file:
+      - .env
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: secret
-      POSTGRES_DB: mydb
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
     ports:
       - "5432:5432"
     volumes:

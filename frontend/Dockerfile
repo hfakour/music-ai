@@ -1,9 +1,24 @@
-FROM node:22
+# مرحله build
+FROM node:22-alpine AS builder
 
 WORKDIR /app
-COPY . .
 
+COPY package*.json ./
 RUN npm install
+
+COPY . .
 RUN npm run build
 
-CMD ["npm", "run", "dev"]
+# مرحله production
+FROM node:22-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app /app
+RUN npm ci --omit=dev
+
+ENV NODE_ENV=production
+
+EXPOSE 3000
+
+CMD ["npm", "start"]

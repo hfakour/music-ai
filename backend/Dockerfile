@@ -1,8 +1,21 @@
-FROM node:22
+# 1. Base image
+FROM node:22-alpine
 
+# 2. Set working directory
 WORKDIR /app
-COPY . .
 
+# 3. Copy package files and install dependencies
+COPY package*.json ./
 RUN npm install
 
-CMD ["npm", "run", "dev"]
+# 4. Copy source code
+COPY . .
+
+# 5. Build TypeScript code
+RUN npm run build
+
+# 6. Expose port
+EXPOSE 3001
+
+# 7. Start the app
+CMD ["node", "dist/server.js"]
