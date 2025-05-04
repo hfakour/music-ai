@@ -6,7 +6,7 @@ const server = Fastify();
 (async () => {
   // فعال‌سازی CORS
   await server.register(cors, {
-    origin: true, // یا مثلاً ['http://localhost:3000'] برای محدود کردن
+    origin: true, 
   });
 
   server.get('/', async () => {

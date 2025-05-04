@@ -4,6 +4,7 @@ import Chat from "~/features/components/chatForm/chat";
 import MessageList from "~/features/components/messages/message-list";
 import MenuButton from "./features/components/menu/menu";
 
+
 export default function App() {
   const { messages, handleSend: baseHandleSend } = useChatManager();
   const [histories, setHistories] = createSignal<string[]>([]);
@@ -32,7 +33,7 @@ export default function App() {
   // گرفتن پیام از بک‌اند در اولین بار
   onMount(async () => {
     try {
-      const res = await fetch("http://backend:3001/");
+      const res = await fetch("/api/");
       const data = await res.json();
       setMessageFromBackend(data.message);
     } catch (err) {
@@ -40,6 +41,7 @@ export default function App() {
       setMessageFromBackend("اتصال به بک‌اند ناموفق بود.");
     }
   });
+  
 
   return (
     <>

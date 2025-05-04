@@ -7,11 +7,29 @@ services:
       - .env
     depends_on:
       - db
+    networks:
+      - app-network
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      target: builder
+    volumes:
+      - frontend_dist:/app/dist
+    networks:
+      - app-network
+
+  nginx:
+    build: ./nginx
     ports:
-      - "3000:3000"
+      - "80:80"
+    depends_on:
+      - frontend
+      - backend
+    volumes:
+      - frontend_dist:/usr/share/nginx/html
+    networks:
+      - app-network
 
   db:
     image: postgres:16
@@ -26,6 +44,8 @@ services:
       - "5432:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
+    networks:
+      - app-network
 
   pgadmin:
     image: dpage/pgadmin4
@@ -37,6 +57,13 @@ services:
       - "5050:80"
     depends_on:
       - db
+    networks:
+      - app-network
 
 volumes:
   db_data:
+  frontend_dist:
+
+networks:
+  app-network:
+    driver: bridge
